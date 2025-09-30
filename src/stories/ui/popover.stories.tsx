@@ -56,7 +56,7 @@ import { format } from 'date-fns';
 import { ko } from 'date-fns/locale';
 
 const meta: Meta<typeof Popover> = {
-  title: 'UI/Popover',
+  title: 'UI/Overlay/Popover',
   component: Popover,
   parameters: {
     layout: 'centered',

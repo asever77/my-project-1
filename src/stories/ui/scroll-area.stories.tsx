@@ -87,7 +87,7 @@ import {
 } from 'lucide-react';
 
 const meta: Meta<typeof ScrollArea> = {
-  title: 'UI/ScrollArea',
+  title: 'UI/Base/ScrollArea',
   component: ScrollArea,
   parameters: {
     layout: 'centered',

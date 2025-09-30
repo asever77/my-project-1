@@ -37,7 +37,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 
 const meta: Meta<typeof ChartContainer> = {
-  title: "UI/Contents/Chart",
+  title: "UI/Contents-active/Chart",
   component: ChartContainer,
   parameters: {
     layout: "centered",

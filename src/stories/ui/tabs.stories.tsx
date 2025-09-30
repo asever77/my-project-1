@@ -83,7 +83,7 @@ import {
 } from 'lucide-react';
 
 const meta: Meta<typeof Tabs> = {
-  title: 'UI/Tabs',
+  title: 'UI/Contents-active/Tabs',
   component: Tabs,
   parameters: {
     layout: 'padded',

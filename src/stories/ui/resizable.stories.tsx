@@ -76,7 +76,7 @@ import {
 } from 'lucide-react';
 
 const meta: Meta<typeof ResizablePanelGroup> = {
-  title: 'UI/Resizable',
+  title: 'UI/Layout/Resizable',
   component: ResizablePanelGroup,
   parameters: {
     layout: 'fullscreen',

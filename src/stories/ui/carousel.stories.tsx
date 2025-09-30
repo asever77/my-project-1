@@ -20,7 +20,7 @@ import { Badge } from "@/components/ui/badge"
 // Avatar component not available, using initials instead
 
 const meta: Meta<typeof Carousel> = {
-  title: "UI/Overlay/Carousel",
+  title: "UI/Contents-active/Carousel",
   component: Carousel,
   parameters: {
     layout: "centered",

@@ -121,7 +121,7 @@ import {
 } from 'lucide-react';
 
 const meta: Meta<typeof Select> = {
-  title: 'UI/Select',
+  title: 'UI/Forms/Select',
   component: Select,
   parameters: {
     layout: 'centered',

@@ -68,7 +68,7 @@ import {
 } from 'lucide-react';
 
 const meta: Meta = {
-  title: 'UI/Sonner',
+  title: 'UI/Overlay/Sonner',
   parameters: {
     layout: 'padded',
     docs: {

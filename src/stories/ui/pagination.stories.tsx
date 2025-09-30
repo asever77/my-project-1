@@ -43,7 +43,7 @@ import {
 } from 'lucide-react';
 
 const meta: Meta<typeof Pagination> = {
-  title: 'UI/Pagination',
+  title: 'UI/Contents/Pagination',
   component: Pagination,
   parameters: {
     layout: 'centered',

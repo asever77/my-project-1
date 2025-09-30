@@ -13,7 +13,7 @@ import {
 type AccordionProps = React.ComponentProps<typeof Accordion>;
 
 const meta: Meta<AccordionProps> = {
-  title: "UI/Overlay/Accordion",
+  title: "UI/contents-active/Accordion",
   component: Accordion,
   parameters: {
     layout: "centered",

@@ -25,7 +25,7 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 const meta: Meta<typeof Command> = {
-  title: "UI/Overlay/Command",
+  title: "UI/Contents/Command",
   component: Command,
   parameters: {
     layout: "centered",

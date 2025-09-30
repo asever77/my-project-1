@@ -135,7 +135,7 @@ import {
 } from 'lucide-react';
 
 const meta: Meta<typeof Sheet> = {
-  title: 'UI/Sheet',
+  title: 'UI/Overlay/Sheet',
   component: Sheet,
   parameters: {
     layout: 'centered',

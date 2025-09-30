@@ -35,7 +35,7 @@ import {
 } from 'lucide-react';
 
 const meta: Meta<typeof Skeleton> = {
-  title: 'UI/Skeleton',
+  title: 'UI/Contents/Skeleton',
   component: Skeleton,
   parameters: {
     layout: 'padded',

@@ -52,7 +52,7 @@ import {
 } from 'lucide-react';
 
 const meta: Meta<typeof Menubar> = {
-  title: 'UI/Menubar',
+  title: 'UI/Overlay/Menubar',
   component: Menubar,
   parameters: {
     layout: 'centered',

@@ -66,7 +66,7 @@ import {
 } from 'lucide-react';
 
 const meta: Meta<typeof Table> = {
-  title: 'UI/Table',
+  title: 'UI/Base/Table',
   component: Table,
   parameters: {
     layout: 'padded',

@@ -62,7 +62,7 @@ import {
 } from 'lucide-react';
 
 const meta: Meta<typeof NavigationMenu> = {
-  title: 'UI/NavigationMenu',
+  title: 'UI/Overlay/NavigationMenu',
   component: NavigationMenu,
   parameters: {
     layout: 'centered',

@@ -13,7 +13,7 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 const meta: Meta<typeof Separator> = {
-  title: "UI/Contents/Separator",
+  title: "UI/Base/Separator",
   component: Separator,
   parameters: {
     layout: "centered",

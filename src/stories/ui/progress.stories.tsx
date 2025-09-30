@@ -39,7 +39,7 @@ import {
 } from 'lucide-react';
 
 const meta: Meta<typeof Progress> = {
-  title: 'UI/Progress',
+  title: 'UI/Forms/Progress',
   component: Progress,
   parameters: {
     layout: 'centered',

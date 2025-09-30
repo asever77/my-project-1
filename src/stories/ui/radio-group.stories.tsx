@@ -59,7 +59,7 @@ import {
 } from 'lucide-react';
 
 const meta: Meta<typeof RadioGroup> = {
-  title: 'UI/RadioGroup',
+  title: 'UI/Forms/RadioGroup',
   component: RadioGroup,
   parameters: {
     layout: 'centered',

@@ -84,7 +84,7 @@ import {
 } from 'lucide-react';
 
 const meta: Meta<typeof Switch> = {
-  title: 'UI/Switch',
+  title: 'UI/Forms/Switch',
   component: Switch,
   parameters: {
     layout: 'padded',

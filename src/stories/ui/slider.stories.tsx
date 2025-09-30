@@ -40,7 +40,7 @@ import {
 } from 'lucide-react';
 
 const meta: Meta<typeof Slider> = {
-  title: 'UI/Slider',
+  title: 'UI/Forms/Slider',
   component: Slider,
   parameters: {
     layout: 'padded',

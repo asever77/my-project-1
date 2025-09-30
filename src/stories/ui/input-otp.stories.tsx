@@ -23,7 +23,7 @@ import {
 } from 'lucide-react';
 
 const meta: Meta<typeof InputOTP> = {
-  title: 'UI/InputOTP',
+  title: 'UI/Forms/InputOTP',
   component: InputOTP,
   parameters: {
     layout: 'centered',
