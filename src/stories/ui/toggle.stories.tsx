@@ -1,0 +1,1051 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import React, { useState } from 'react';
+import { Toggle } from '@/components/ui/toggle';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Label } from '@/components/ui/label';
+import { 
+  Bold, 
+  Italic, 
+  Underline, 
+  Star,
+  Heart,
+  Bookmark,
+  Eye,
+  EyeOff,
+  Volume2,
+  VolumeX,
+  Sun,
+  Moon,
+  Wifi,
+  WifiOff,
+  Bluetooth,
+  Battery,
+  BatteryLow,
+  Power,
+  PowerOff,
+  Bell,
+  BellOff,
+  Mic,
+  MicOff,
+  Camera,
+  CameraOff,
+  Play,
+  Pause,
+  SkipBack,
+  SkipForward,
+  Repeat,
+  Shuffle,
+  Download,
+  Upload,
+  Settings,
+  User,
+  Lock,
+  Unlock,
+  Shield,
+  ShieldOff,
+  Zap,
+  ZapOff,
+  Edit,
+  Edit2,
+  Search,
+  Filter,
+  Grid,
+  List,
+  Calendar,
+  Clock,
+  Mail,
+  MailOpen,
+  Archive,
+  Trash2,
+  Share2,
+  Copy,
+  Check,
+  X,
+  Plus,
+  Minus,
+  ChevronUp,
+  ChevronDown,
+  Home,
+  Building,
+  Car,
+  Plane,
+  MapPin,
+  Globe,
+  Monitor,
+  Smartphone,
+  Tablet,
+  Laptop,
+  Headphones,
+  MousePointer2,
+  Keyboard,
+  Gamepad2,
+  Paintbrush,
+  Palette,
+  Type,
+  Image as ImageIcon,
+  Video,
+  Music,
+  FileText,
+  Folder,
+  FolderOpen,
+  Save,
+  Printer,
+  Scan,
+  Link,
+  Unlink,
+  Code,
+  Terminal,
+  Database,
+  Server,
+  Cloud,
+  CloudOff,
+  Wifi as WifiIcon,
+  Signal,
+  Antenna,
+  Radio,
+  Tv,
+  Speaker,
+  Maximize2,
+  Minimize2,
+  RotateCcw,
+  RotateCw,
+  RefreshCw,
+  Target,
+  Focus,
+  Crosshair,
+  Move,
+  MousePointer,
+  Hand
+} from 'lucide-react';
+
+const meta: Meta<typeof Toggle> = {
+  title: 'UI/Toggle',
+  component: Toggle,
+  parameters: {
+    layout: 'centered',
+    docs: {
+      description: {
+        component: '켜기/끄기 상태를 전환하는 토글 버튼 컴포넌트입니다. 다양한 크기와 스타일 변형을 지원합니다.',
+      },
+    },
+  },
+  tags: ['autodocs'],
+  argTypes: {
+    pressed: {
+      description: '토글 상태 (눌림/안눌림)',
+      control: 'boolean',
+    },
+    variant: {
+      description: '스타일 변형',
+      control: 'select',
+      options: ['default', 'outline'],
+    },
+    size: {
+      description: '크기',
+      control: 'select',
+      options: ['default', 'sm', 'lg'],
+    },
+    disabled: {
+      description: '비활성화 상태',
+      control: 'boolean',
+    },
+  },
+};
+
+export default meta;
+type Story = StoryObj<typeof Toggle>;
+
+export const Default: Story = {
+  render: () => {
+    const [isPressed, setIsPressed] = useState(false);
+    
+    return (
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold mb-4">기본 토글</h3>
+        <div className="space-y-6">
+          <div className="flex items-center gap-4">
+            <Toggle 
+              pressed={isPressed} 
+              onPressedChange={setIsPressed}
+              aria-label="굵게 만들기"
+            >
+              <Bold className="h-4 w-4" />
+            </Toggle>
+            <span className="text-sm text-muted-foreground">
+              상태: {isPressed ? '활성' : '비활성'}
+            </span>
+          </div>
+
+          <div className="space-y-2">
+            <Label className="text-sm font-medium">다양한 크기</Label>
+            <div className="flex items-center gap-2">
+              <Toggle size="sm" aria-label="작은 토글">
+                <Star className="h-3 w-3" />
+              </Toggle>
+              <Toggle size="default" aria-label="기본 토글">
+                <Star className="h-4 w-4" />
+              </Toggle>
+              <Toggle size="lg" aria-label="큰 토글">
+                <Star className="h-5 w-5" />
+              </Toggle>
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <Label className="text-sm font-medium">스타일 변형</Label>
+            <div className="flex items-center gap-2">
+              <Toggle variant="default" aria-label="기본 스타일">
+                <Heart className="h-4 w-4" />
+              </Toggle>
+              <Toggle variant="outline" aria-label="아웃라인 스타일">
+                <Heart className="h-4 w-4" />
+              </Toggle>
+              <Toggle variant="outline" pressed aria-label="눌린 아웃라인">
+                <Heart className="h-4 w-4 fill-current" />
+              </Toggle>
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <Label className="text-sm font-medium">비활성화 상태</Label>
+            <div className="flex items-center gap-2">
+              <Toggle disabled aria-label="비활성화됨">
+                <Bookmark className="h-4 w-4" />
+              </Toggle>
+              <Toggle disabled pressed aria-label="눌린 상태로 비활성화됨">
+                <Bookmark className="h-4 w-4 fill-current" />
+              </Toggle>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  },
+};
+
+export const TextFormatting: Story = {
+  render: () => {
+    const [formatting, setFormatting] = useState({
+      bold: false,
+      italic: false,
+      underline: false,
+    });
+    
+    const toggleFormat = (format: keyof typeof formatting) => {
+      setFormatting(prev => ({
+        ...prev,
+        [format]: !prev[format]
+      }));
+    };
+    
+    return (
+      <div className="w-full max-w-2xl space-y-6">
+        <h3 className="text-lg font-semibold mb-4">텍스트 서식 도구</h3>
+        
+        <Card>
+          <CardHeader>
+            <CardTitle>글꼴 서식</CardTitle>
+            <CardDescription>
+              텍스트에 적용할 서식을 선택하세요
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-center gap-2">
+              <Toggle 
+                pressed={formatting.bold} 
+                onPressedChange={() => toggleFormat('bold')}
+                aria-label="굵게"
+                aria-pressed={formatting.bold}
+              >
+                <Bold className="h-4 w-4" />
+              </Toggle>
+              <Toggle 
+                pressed={formatting.italic} 
+                onPressedChange={() => toggleFormat('italic')}
+                aria-label="기울임"
+                aria-pressed={formatting.italic}
+              >
+                <Italic className="h-4 w-4" />
+              </Toggle>
+              <Toggle 
+                pressed={formatting.underline} 
+                onPressedChange={() => toggleFormat('underline')}
+                aria-label="밑줄"
+                aria-pressed={formatting.underline}
+              >
+                <Underline className="h-4 w-4" />
+              </Toggle>
+            </div>
+            
+            <div className="mt-4 p-4 border rounded-lg bg-muted/30">
+              <h4 className="font-medium mb-2">미리보기</h4>
+              <p 
+                className="text-sm"
+                style={{
+                  fontWeight: formatting.bold ? 'bold' : 'normal',
+                  fontStyle: formatting.italic ? 'italic' : 'normal',
+                  textDecoration: formatting.underline ? 'underline' : 'none',
+                }}
+              >
+                이 텍스트에 선택한 서식이 적용됩니다. 
+                굵게, 기울임, 밑줄 효과를 실시간으로 확인할 수 있습니다.
+              </p>
+              <div className="mt-2 text-xs text-muted-foreground">
+                활성 서식: {Object.entries(formatting)
+                  .filter(([_, value]) => value)
+                  .map(([key]) => key)
+                  .join(', ') || '없음'}
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  },
+};
+
+export const SystemSettings: Story = {
+  render: () => {
+    const [settings, setSettings] = useState({
+      darkMode: false,
+      notifications: true,
+      wifi: true,
+      bluetooth: false,
+      sound: true,
+      location: false,
+      autoSave: true,
+      powerSaver: false,
+    });
+    
+    const toggleSetting = (setting: keyof typeof settings) => {
+      setSettings(prev => ({
+        ...prev,
+        [setting]: !prev[setting]
+      }));
+    };
+    
+    return (
+      <div className="w-full max-w-3xl space-y-6">
+        <h3 className="text-lg font-semibold mb-4">시스템 설정</h3>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* 화면 설정 */}
+          <Card>
+            <CardHeader>
+              <CardTitle>화면 설정</CardTitle>
+              <CardDescription>디스플레이와 테마 설정</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  {settings.darkMode ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+                  <Label htmlFor="dark-mode">다크 모드</Label>
+                </div>
+                <Toggle 
+                  id="dark-mode"
+                  pressed={settings.darkMode} 
+                  onPressedChange={() => toggleSetting('darkMode')}
+                  aria-label="다크 모드 전환"
+                >
+                  {settings.darkMode ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+                </Toggle>
+              </div>
+              
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <Eye className="h-4 w-4" />
+                  <Label htmlFor="auto-save">자동 저장</Label>
+                </div>
+                <Toggle 
+                  id="auto-save"
+                  pressed={settings.autoSave} 
+                  onPressedChange={() => toggleSetting('autoSave')}
+                  aria-label="자동 저장 전환"
+                  variant="outline"
+                >
+                  {settings.autoSave ? <Check className="h-4 w-4" /> : <X className="h-4 w-4" />}
+                </Toggle>
+              </div>
+            </CardContent>
+          </Card>
+          
+          {/* 알림 설정 */}
+          <Card>
+            <CardHeader>
+              <CardTitle>알림 설정</CardTitle>
+              <CardDescription>알림과 사운드 설정</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  {settings.notifications ? <Bell className="h-4 w-4" /> : <BellOff className="h-4 w-4" />}
+                  <Label htmlFor="notifications">알림</Label>
+                </div>
+                <Toggle 
+                  id="notifications"
+                  pressed={settings.notifications} 
+                  onPressedChange={() => toggleSetting('notifications')}
+                  aria-label="알림 전환"
+                  size="sm"
+                >
+                  {settings.notifications ? <Bell className="h-3 w-3" /> : <BellOff className="h-3 w-3" />}
+                </Toggle>
+              </div>
+              
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  {settings.sound ? <Volume2 className="h-4 w-4" /> : <VolumeX className="h-4 w-4" />}
+                  <Label htmlFor="sound">소리</Label>
+                </div>
+                <Toggle 
+                  id="sound"
+                  pressed={settings.sound} 
+                  onPressedChange={() => toggleSetting('sound')}
+                  aria-label="소리 전환"
+                  size="sm"
+                >
+                  {settings.sound ? <Volume2 className="h-3 w-3" /> : <VolumeX className="h-3 w-3" />}
+                </Toggle>
+              </div>
+            </CardContent>
+          </Card>
+          
+          {/* 연결 설정 */}
+          <Card>
+            <CardHeader>
+              <CardTitle>연결 설정</CardTitle>
+              <CardDescription>무선 연결 및 네트워크</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  {settings.wifi ? <Wifi className="h-4 w-4" /> : <WifiOff className="h-4 w-4" />}
+                  <Label htmlFor="wifi">Wi-Fi</Label>
+                </div>
+                <Toggle 
+                  id="wifi"
+                  pressed={settings.wifi} 
+                  onPressedChange={() => toggleSetting('wifi')}
+                  aria-label="Wi-Fi 전환"
+                >
+                  {settings.wifi ? <Wifi className="h-4 w-4" /> : <WifiOff className="h-4 w-4" />}
+                </Toggle>
+              </div>
+              
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <Bluetooth className="h-4 w-4" />
+                  <Label htmlFor="bluetooth">Bluetooth</Label>
+                </div>
+                <Toggle 
+                  id="bluetooth"
+                  pressed={settings.bluetooth} 
+                  onPressedChange={() => toggleSetting('bluetooth')}
+                  aria-label="Bluetooth 전환"
+                  variant="outline"
+                >
+                  <Bluetooth className="h-4 w-4" />
+                </Toggle>
+              </div>
+            </CardContent>
+          </Card>
+          
+          {/* 개인정보 설정 */}
+          <Card>
+            <CardHeader>
+              <CardTitle>개인정보 설정</CardTitle>
+              <CardDescription>위치 및 보안 설정</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <MapPin className="h-4 w-4" />
+                  <Label htmlFor="location">위치 서비스</Label>
+                </div>
+                <Toggle 
+                  id="location"
+                  pressed={settings.location} 
+                  onPressedChange={() => toggleSetting('location')}
+                  aria-label="위치 서비스 전환"
+                  size="lg"
+                >
+                  <MapPin className="h-5 w-5" />
+                </Toggle>
+              </div>
+              
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  {settings.powerSaver ? <BatteryLow className="h-4 w-4" /> : <Battery className="h-4 w-4" />}
+                  <Label htmlFor="power-saver">절전 모드</Label>
+                </div>
+                <Toggle 
+                  id="power-saver"
+                  pressed={settings.powerSaver} 
+                  onPressedChange={() => toggleSetting('powerSaver')}
+                  aria-label="절전 모드 전환"
+                  size="lg"
+                >
+                  {settings.powerSaver ? <BatteryLow className="h-5 w-5" /> : <Battery className="h-5 w-5" />}
+                </Toggle>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+        
+        {/* 설정 요약 */}
+        <Card>
+          <CardHeader>
+            <CardTitle>설정 요약</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {Object.entries(settings).map(([key, value]) => (
+                <div key={key} className="text-center">
+                  <Badge variant={value ? "default" : "secondary"} className="w-full">
+                    {key}: {value ? '켜짐' : '꺼짐'}
+                  </Badge>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  },
+};
+
+export const MediaControls: Story = {
+  render: () => {
+    const [controls, setControls] = useState({
+      playing: false,
+      muted: false,
+      recording: false,
+      camera: false,
+      microphone: false,
+      repeat: false,
+      shuffle: false,
+      fullscreen: false,
+    });
+    
+    const toggleControl = (control: keyof typeof controls) => {
+      setControls(prev => ({
+        ...prev,
+        [control]: !prev[control]
+      }));
+    };
+    
+    return (
+      <div className="w-full max-w-4xl space-y-6">
+        <h3 className="text-lg font-semibold mb-4">미디어 컨트롤</h3>
+        
+        <Card>
+          <CardHeader>
+            <CardTitle>동영상 플레이어</CardTitle>
+            <CardDescription>
+              재생, 녹화, 설정 등 모든 미디어 기능을 제어하세요
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            {/* 기본 재생 컨트롤 */}
+            <div>
+              <Label className="text-sm font-medium mb-3 block">재생 컨트롤</Label>
+              <div className="flex items-center gap-3">
+                <Toggle 
+                  pressed={controls.playing} 
+                  onPressedChange={() => toggleControl('playing')}
+                  aria-label={controls.playing ? "일시정지" : "재생"}
+                  size="lg"
+                >
+                  {controls.playing ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5" />}
+                </Toggle>
+                
+                <Toggle 
+                  pressed={controls.muted} 
+                  onPressedChange={() => toggleControl('muted')}
+                  aria-label={controls.muted ? "음소거 해제" : "음소거"}
+                  variant="outline"
+                >
+                  {controls.muted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+                </Toggle>
+                
+                <Toggle 
+                  pressed={controls.repeat} 
+                  onPressedChange={() => toggleControl('repeat')}
+                  aria-label="반복 재생"
+                  variant="outline"
+                  size="sm"
+                >
+                  <Repeat className="h-3 w-3" />
+                </Toggle>
+                
+                <Toggle 
+                  pressed={controls.shuffle} 
+                  onPressedChange={() => toggleControl('shuffle')}
+                  aria-label="셔플"
+                  variant="outline"
+                  size="sm"
+                >
+                  <Shuffle className="h-3 w-3" />
+                </Toggle>
+                
+                <Toggle 
+                  pressed={controls.fullscreen} 
+                  onPressedChange={() => toggleControl('fullscreen')}
+                  aria-label="전체화면"
+                  variant="outline"
+                >
+                  {controls.fullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
+                </Toggle>
+              </div>
+            </div>
+            
+            {/* 녹화 컨트롤 */}
+            <div>
+              <Label className="text-sm font-medium mb-3 block">녹화 및 스트리밍</Label>
+              <div className="flex items-center gap-3">
+                <Toggle 
+                  pressed={controls.recording} 
+                  onPressedChange={() => toggleControl('recording')}
+                  aria-label={controls.recording ? "녹화 중지" : "녹화 시작"}
+                  variant={controls.recording ? "default" : "outline"}
+                  className={controls.recording ? "bg-red-500 hover:bg-red-600" : ""}
+                >
+                  <div className={`h-3 w-3 rounded-full ${controls.recording ? 'bg-white' : 'bg-red-500'}`} />
+                </Toggle>
+                
+                <Toggle 
+                  pressed={controls.camera} 
+                  onPressedChange={() => toggleControl('camera')}
+                  aria-label={controls.camera ? "카메라 끄기" : "카메라 켜기"}
+                  variant="outline"
+                >
+                  {controls.camera ? <Camera className="h-4 w-4" /> : <CameraOff className="h-4 w-4" />}
+                </Toggle>
+                
+                <Toggle 
+                  pressed={controls.microphone} 
+                  onPressedChange={() => toggleControl('microphone')}
+                  aria-label={controls.microphone ? "마이크 끄기" : "마이크 켜기"}
+                  variant="outline"
+                >
+                  {controls.microphone ? <Mic className="h-4 w-4" /> : <MicOff className="h-4 w-4" />}
+                </Toggle>
+              </div>
+            </div>
+            
+            {/* 상태 표시 */}
+            <div className="mt-6 p-4 bg-muted/30 rounded-lg">
+              <h4 className="font-medium mb-3">현재 상태</h4>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <div className="flex items-center gap-2">
+                  <div className={`w-2 h-2 rounded-full ${controls.playing ? 'bg-green-500' : 'bg-gray-400'}`} />
+                  <span className="text-sm">재생: {controls.playing ? '중' : '정지'}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className={`w-2 h-2 rounded-full ${controls.recording ? 'bg-red-500' : 'bg-gray-400'}`} />
+                  <span className="text-sm">녹화: {controls.recording ? '중' : '대기'}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className={`w-2 h-2 rounded-full ${controls.camera ? 'bg-blue-500' : 'bg-gray-400'}`} />
+                  <span className="text-sm">카메라: {controls.camera ? '켜짐' : '꺼짐'}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className={`w-2 h-2 rounded-full ${controls.microphone ? 'bg-orange-500' : 'bg-gray-400'}`} />
+                  <span className="text-sm">마이크: {controls.microphone ? '켜짐' : '꺼짐'}</span>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+        
+        {/* 가상 플레이어 미리보기 */}
+        <Card>
+          <CardHeader>
+            <CardTitle>플레이어 미리보기</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="aspect-video bg-black rounded-lg flex items-center justify-center relative">
+              <div className="text-white text-center">
+                {controls.playing ? (
+                  <div className="space-y-2">
+                    <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto">
+                      <Pause className="h-6 w-6" />
+                    </div>
+                    <p>재생 중...</p>
+                  </div>
+                ) : (
+                  <div className="space-y-2">
+                    <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto">
+                      <Play className="h-6 w-6 ml-1" />
+                    </div>
+                    <p>일시정지됨</p>
+                  </div>
+                )}
+              </div>
+              
+              {/* 상태 표시 아이콘들 */}
+              <div className="absolute top-4 right-4 flex gap-2">
+                {controls.recording && (
+                  <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+                    <div className="w-3 h-3 bg-white rounded-full" />
+                  </div>
+                )}
+                {controls.muted && <VolumeX className="w-5 h-5 text-white/80" />}
+                {!controls.camera && <CameraOff className="w-5 h-5 text-white/80" />}
+                {!controls.microphone && <MicOff className="w-5 h-5 text-white/80" />}
+              </div>
+              
+              {/* 재생 옵션 표시 */}
+              <div className="absolute bottom-4 left-4 flex gap-2">
+                {controls.repeat && <Repeat className="w-4 h-4 text-white/80" />}
+                {controls.shuffle && <Shuffle className="w-4 h-4 text-white/80" />}
+                {controls.fullscreen && <Maximize2 className="w-4 h-4 text-white/80" />}
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  },
+};
+
+export const AccessibilityDemo: Story = {
+  render: () => {
+    const [features, setFeatures] = useState({
+      voiceControl: false,
+      highContrast: false,
+      largeText: false,
+      screenReader: true,
+      keyboardNav: true,
+      reducedMotion: false,
+      autoplay: false,
+      captions: true,
+    });
+    
+    const toggleFeature = (feature: keyof typeof features) => {
+      setFeatures(prev => ({
+        ...prev,
+        [feature]: !prev[feature]
+      }));
+    };
+    
+    return (
+      <div className="w-full max-w-4xl space-y-6">
+        <div className="p-4 border rounded-lg">
+          <h3 className="font-semibold mb-2">접근성 기능</h3>
+          <ul className="text-sm space-y-1 text-muted-foreground">
+            <li>• 키보드 내비게이션 완전 지원 (Tab, Enter, Space)</li>
+            <li>• 스크린 리더 완전 호환성 및 ARIA 속성</li>
+            <li>• 토글 상태의 명확한 시각적 및 음성 피드백</li>
+            <li>• 적절한 색상 대비와 포커스 표시</li>
+            <li>• 상태 변경 시 실시간 안내 (aria-live)</li>
+          </ul>
+        </div>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Eye className="h-5 w-5" />
+              접근성 적용 토글
+            </CardTitle>
+            <CardDescription>
+              모든 사용자가 쉽게 이용할 수 있도록 설계된 토글 컴포넌트입니다
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            {/* 시각 접근성 */}
+            <div>
+              <Label className="text-sm font-medium mb-3 block">시각 접근성 기능</Label>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="flex items-center justify-between p-3 border rounded">
+                  <div className="flex items-center gap-3">
+                    <Eye className="h-4 w-4" />
+                    <Label htmlFor="high-contrast">고대비 모드</Label>
+                  </div>
+                  <Toggle 
+                    id="high-contrast"
+                    pressed={features.highContrast} 
+                    onPressedChange={() => toggleFeature('highContrast')}
+                    aria-label="고대비 모드 전환"
+                    aria-describedby="high-contrast-desc"
+                  >
+                    <Eye className="h-4 w-4" />
+                  </Toggle>
+                </div>
+                <p id="high-contrast-desc" className="sr-only">
+                  고대비 모드를 활성화하여 텍스트와 배경 간의 대비를 높입니다
+                </p>
+                
+                <div className="flex items-center justify-between p-3 border rounded">
+                  <div className="flex items-center gap-3">
+                    <Type className="h-4 w-4" />
+                    <Label htmlFor="large-text">큰 텍스트</Label>
+                  </div>
+                  <Toggle 
+                    id="large-text"
+                    pressed={features.largeText} 
+                    onPressedChange={() => toggleFeature('largeText')}
+                    aria-label="큰 텍스트 모드 전환"
+                    aria-describedby="large-text-desc"
+                    variant="outline"
+                  >
+                    <Type className="h-4 w-4" />
+                  </Toggle>
+                </div>
+                <p id="large-text-desc" className="sr-only">
+                  모든 텍스트 크기를 확대하여 가독성을 향상시킵니다
+                </p>
+              </div>
+            </div>
+            
+            {/* 청각 접근성 */}
+            <div>
+              <Label className="text-sm font-medium mb-3 block">청각 접근성 기능</Label>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="flex items-center justify-between p-3 border rounded">
+                  <div className="flex items-center gap-3">
+                    <Volume2 className="h-4 w-4" />
+                    <Label htmlFor="screen-reader">스크린 리더</Label>
+                  </div>
+                  <Toggle 
+                    id="screen-reader"
+                    pressed={features.screenReader} 
+                    onPressedChange={() => toggleFeature('screenReader')}
+                    aria-label="스크린 리더 지원 전환"
+                    aria-describedby="screen-reader-desc"
+                  >
+                    <Volume2 className="h-4 w-4" />
+                  </Toggle>
+                </div>
+                <p id="screen-reader-desc" className="sr-only">
+                  스크린 리더 사용자를 위한 음성 안내 기능을 활성화합니다
+                </p>
+                
+                <div className="flex items-center justify-between p-3 border rounded">
+                  <div className="flex items-center gap-3">
+                    <FileText className="h-4 w-4" />
+                    <Label htmlFor="captions">자막 표시</Label>
+                  </div>
+                  <Toggle 
+                    id="captions"
+                    pressed={features.captions} 
+                    onPressedChange={() => toggleFeature('captions')}
+                    aria-label="자막 표시 전환"
+                    aria-describedby="captions-desc"
+                    variant="outline"
+                  >
+                    <FileText className="h-4 w-4" />
+                  </Toggle>
+                </div>
+                <p id="captions-desc" className="sr-only">
+                  동영상 및 오디오 콘텐츠에 자막을 표시합니다
+                </p>
+              </div>
+            </div>
+            
+            {/* 운동 접근성 */}
+            <div>
+              <Label className="text-sm font-medium mb-3 block">운동 접근성 기능</Label>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="flex items-center justify-between p-3 border rounded">
+                  <div className="flex items-center gap-3">
+                    <Keyboard className="h-4 w-4" />
+                    <Label htmlFor="keyboard-nav">키보드 내비게이션</Label>
+                  </div>
+                  <Toggle 
+                    id="keyboard-nav"
+                    pressed={features.keyboardNav} 
+                    onPressedChange={() => toggleFeature('keyboardNav')}
+                    aria-label="키보드 내비게이션 전환"
+                    aria-describedby="keyboard-nav-desc"
+                  >
+                    <Keyboard className="h-4 w-4" />
+                  </Toggle>
+                </div>
+                <p id="keyboard-nav-desc" className="sr-only">
+                  마우스 없이 키보드만으로 모든 기능을 사용할 수 있습니다
+                </p>
+                
+                <div className="flex items-center justify-between p-3 border rounded">
+                  <div className="flex items-center gap-3">
+                    <Mic className="h-4 w-4" />
+                    <Label htmlFor="voice-control">음성 제어</Label>
+                  </div>
+                  <Toggle 
+                    id="voice-control"
+                    pressed={features.voiceControl} 
+                    onPressedChange={() => toggleFeature('voiceControl')}
+                    aria-label="음성 제어 전환"
+                    aria-describedby="voice-control-desc"
+                    variant="outline"
+                  >
+                    <Mic className="h-4 w-4" />
+                  </Toggle>
+                </div>
+                <p id="voice-control-desc" className="sr-only">
+                  음성 명령으로 인터페이스를 제어할 수 있습니다
+                </p>
+              </div>
+            </div>
+            
+            {/* 감각 민감성 */}
+            <div>
+              <Label className="text-sm font-medium mb-3 block">감각 민감성 기능</Label>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="flex items-center justify-between p-3 border rounded">
+                  <div className="flex items-center gap-3">
+                    <Pause className="h-4 w-4" />
+                    <Label htmlFor="reduced-motion">애니메이션 감소</Label>
+                  </div>
+                  <Toggle 
+                    id="reduced-motion"
+                    pressed={features.reducedMotion} 
+                    onPressedChange={() => toggleFeature('reducedMotion')}
+                    aria-label="애니메이션 감소 전환"
+                    aria-describedby="reduced-motion-desc"
+                  >
+                    <Pause className="h-4 w-4" />
+                  </Toggle>
+                </div>
+                <p id="reduced-motion-desc" className="sr-only">
+                  움직임에 민감한 사용자를 위해 애니메이션을 최소화합니다
+                </p>
+                
+                <div className="flex items-center justify-between p-3 border rounded">
+                  <div className="flex items-center gap-3">
+                    <Play className="h-4 w-4" />
+                    <Label htmlFor="autoplay">자동 재생 방지</Label>
+                  </div>
+                  <Toggle 
+                    id="autoplay"
+                    pressed={features.autoplay} 
+                    onPressedChange={() => toggleFeature('autoplay')}
+                    aria-label="자동 재생 방지 전환"
+                    aria-describedby="autoplay-desc"
+                    variant="outline"
+                  >
+                    <Play className="h-4 w-4" />
+                  </Toggle>
+                </div>
+                <p id="autoplay-desc" className="sr-only">
+                  미디어 콘텐츠의 자동 재생을 방지합니다
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* 실시간 피드백 */}
+        <div 
+          className="p-4 border rounded-lg"
+          aria-live="polite"
+          aria-label="접근성 설정 상태"
+        >
+          <h4 className="font-medium mb-2">현재 활성화된 접근성 기능</h4>
+          <div className="flex flex-wrap gap-2">
+            {Object.entries(features)
+              .filter(([_, enabled]) => enabled)
+              .map(([feature, _]) => (
+                <Badge key={feature} variant="default">
+                  {feature === 'voiceControl' && '음성 제어'}
+                  {feature === 'highContrast' && '고대비 모드'}
+                  {feature === 'largeText' && '큰 텍스트'}
+                  {feature === 'screenReader' && '스크린 리더'}
+                  {feature === 'keyboardNav' && '키보드 내비게이션'}
+                  {feature === 'reducedMotion' && '애니메이션 감소'}
+                  {feature === 'autoplay' && '자동 재생 방지'}
+                  {feature === 'captions' && '자막 표시'}
+                </Badge>
+              ))
+            }
+            {Object.values(features).every(value => !value) && (
+              <span className="text-muted-foreground">활성화된 기능이 없습니다</span>
+            )}
+          </div>
+        </div>
+
+        {/* 접근성 가이드라인 */}
+        <Card>
+          <CardHeader>
+            <CardTitle>토글 접근성 가이드라인</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-3">
+                <h4 className="font-medium text-green-600">✅ 권장사항</h4>
+                <ul className="text-sm space-y-2">
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-500 mt-1">•</span>
+                    <span>명확한 레이블과 설명</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-500 mt-1">•</span>
+                    <span>적절한 ARIA 상태 속성</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-500 mt-1">•</span>
+                    <span>키보드 접근 가능</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-500 mt-1">•</span>
+                    <span>상태 변경 실시간 안내</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-500 mt-1">•</span>
+                    <span>충분한 클릭 영역 (44px 이상)</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div className="space-y-3">
+                <h4 className="font-medium text-orange-600">⚠️ 주의사항</h4>
+                <ul className="text-sm space-y-2">
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">•</span>
+                    <span>색상만으로 상태 구분 금지</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">•</span>
+                    <span>상태 변경 시 예상치 못한 포커스 이동</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">•</span>
+                    <span>중요한 기능의 의도치 않은 활성화</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">•</span>
+                    <span>접근성 기능 끄기 어려움</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <div className="mt-6 p-4 bg-blue-50 rounded-lg">
+          <div className="flex items-start gap-2">
+            <Eye className="h-5 w-5 text-blue-600 mt-0.5" />
+            <div>
+              <h5 className="font-medium text-blue-900">키보드 사용법</h5>
+              <div className="text-sm text-blue-800 mt-2 space-y-1">
+                <p>• <kbd className="px-1 py-0.5 bg-blue-200 rounded text-xs">Tab</kbd>: 다음 토글로 이동</p>
+                <p>• <kbd className="px-1 py-0.5 bg-blue-200 rounded text-xs">Shift + Tab</kbd>: 이전 토글로 이동</p>
+                <p>• <kbd className="px-1 py-0.5 bg-blue-200 rounded text-xs">Space</kbd> 또는 <kbd className="px-1 py-0.5 bg-blue-200 rounded text-xs">Enter</kbd>: 토글 활성화/비활성화</p>
+                <p>• <kbd className="px-1 py-0.5 bg-blue-200 rounded text-xs">Esc</kbd>: 포커스 해제</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: '토글 컴포넌트의 접근성 기능과 키보드 내비게이션을 보여주는 데모입니다.',
+      },
+    },
+  },
+};
