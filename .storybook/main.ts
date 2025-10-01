@@ -24,6 +24,9 @@ const config: StorybookConfig = {
     <base href="/my-project-1/storybook/">
   `,
   "viteFinal": async (config) => {
+    // 프로덕션 환경 설정
+    const isProduction = process.env.NODE_ENV === 'production';
+    
     // GitHub Actions에서 빌드 시 이미지 문제 해결
     if (config.build) {
       config.build.rollupOptions = {
@@ -49,6 +52,23 @@ const config: StorybookConfig = {
         '@': require('path').resolve(__dirname, '../src'),
       },
     };
+    
+    // 프로덕션에서 개발 도구 제거
+    if (isProduction) {
+      config.define = {
+        ...config.define,
+        'process.env.NODE_ENV': '"production"',
+        global: 'globalThis',
+      };
+      
+      // 개발 전용 플러그인 제거
+      config.plugins = config.plugins?.filter(plugin => {
+        if (typeof plugin === 'object' && plugin && 'name' in plugin) {
+          return !plugin.name?.includes('mock') && !plugin.name?.includes('inject');
+        }
+        return true;
+      });
+    }
     
     // CSS 처리 최적화
     config.css = {
