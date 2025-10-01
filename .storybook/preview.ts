@@ -15,7 +15,22 @@ const preview: Preview = {
       // 'error' - fail CI on a11y violations
       // 'off' - skip a11y checks entirely
       test: 'todo'
-    }
+    },
+
+    // 배경색과 테마 설정
+    backgrounds: {
+      default: 'light',
+      values: [
+        {
+          name: 'light',
+          value: '#ffffff',
+        },
+        {
+          name: 'dark',
+          value: '#09090b',
+        },
+      ],
+    },
   },
 };
 

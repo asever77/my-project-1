@@ -70,11 +70,14 @@ const config: StorybookConfig = {
       });
     }
     
-    // CSS 처리 최적화
+    // CSS 처리 최적화 - Tailwind v4 지원
     config.css = {
       ...config.css,
       postcss: {
-        plugins: [],
+        plugins: [
+          require('@tailwindcss/postcss'),
+          require('autoprefixer'),
+        ],
       },
     };
     
