@@ -18,6 +18,11 @@ const config: StorybookConfig = {
   "staticDirs": [
     "../public"
   ],
+  // GitHub Pages를 위한 기본 경로 설정
+  "managerHead": (head) => `
+    ${head}
+    <base href="/my-project-1/storybook/">
+  `,
   "viteFinal": async (config) => {
     // GitHub Actions에서 빌드 시 이미지 문제 해결
     if (config.build) {
@@ -30,6 +35,10 @@ const config: StorybookConfig = {
                  id.includes('github.svg');
         }
       };
+      
+      // 빌드 최적화 설정
+      config.build.chunkSizeWarningLimit = 1000;
+      config.build.minify = true;
     }
     
     // resolve alias 설정
@@ -39,6 +48,25 @@ const config: StorybookConfig = {
         ...config.resolve?.alias,
         '@': require('path').resolve(__dirname, '../src'),
       },
+    };
+    
+    // CSS 처리 최적화
+    config.css = {
+      ...config.css,
+      postcss: {
+        plugins: [],
+      },
+    };
+    
+    // 외부 라이브러리 최적화 설정
+    config.optimizeDeps = {
+      ...config.optimizeDeps,
+      include: [
+        'recharts',
+        'embla-carousel-react',
+        '@radix-ui/react-tabs',
+        'lucide-react'
+      ],
     };
     
     return config;
