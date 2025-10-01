@@ -75,7 +75,7 @@ import { BarChart, Bar, XAxis, YAxis } from "recharts"
 const chartConfig = {
   sales: {
     label: "매출",
-    color: "hsl(var(--chart-1))",
+    color: "var(--chart-1)",
   },
 } satisfies ChartConfig
 
@@ -177,7 +177,7 @@ export const Default: Story = {
     const chartConfig = {
       sales: {
         label: "매출",
-        color: "hsl(var(--chart-1))",
+        color: "var(--chart-1)",
       },
     } satisfies ChartConfig
 
@@ -222,11 +222,11 @@ export const LineChartStory: Story = {
     const chartConfig = {
       visitors: {
         label: "방문자",
-        color: "hsl(var(--chart-1))",
+        color: "var(--chart-1)",
       },
       pageViews: {
         label: "페이지뷰",
-        color: "hsl(var(--chart-2))",
+        color: "var(--chart-2)",
       },
     } satisfies ChartConfig
 
@@ -290,15 +290,15 @@ export const AreaChartStory: Story = {
     const chartConfig = {
       revenue: {
         label: "매출",
-        color: "hsl(var(--chart-1))",
+        color: "var(--chart-1)",
       },
       expenses: {
         label: "비용",
-        color: "hsl(var(--chart-2))",
+        color: "var(--chart-2)",
       },
       profit: {
         label: "순이익",
-        color: "hsl(var(--chart-3))",
+        color: "var(--chart-3)",
       },
     } satisfies ChartConfig
 
@@ -372,27 +372,27 @@ export const PieChartStory: Story = {
     const chartConfig = {
       desktop: {
         label: "데스크톱",
-        color: "hsl(var(--chart-1))",
+        color: "var(--chart-1)",
       },
       mobile: {
         label: "모바일",
-        color: "hsl(var(--chart-2))",
+        color: "var(--chart-2)",
       },
       tablet: {
         label: "태블릿",
-        color: "hsl(var(--chart-3))",
+        color: "var(--chart-3)",
       },
       other: {
         label: "기타",
-        color: "hsl(var(--chart-4))",
+        color: "var(--chart-4)",
       },
     } satisfies ChartConfig
 
     const COLORS = [
-      "hsl(var(--chart-1))",
-      "hsl(var(--chart-2))",
-      "hsl(var(--chart-3))",
-      "hsl(var(--chart-4))",
+      "var(--chart-1)",
+      "var(--chart-2)",
+      "var(--chart-3)",
+      "var(--chart-4)",
     ]
 
     return (
@@ -471,7 +471,7 @@ export const RadialChart: Story = {
     const chartConfig = {
       progress: {
         label: "진행률",
-        color: "hsl(var(--chart-1))",
+        color: "var(--chart-1)",
       },
       remaining: {
         label: "잔여",
@@ -489,16 +489,26 @@ export const RadialChart: Story = {
           </CardHeader>
           <CardContent>
             <ChartContainer config={chartConfig} className="mx-auto aspect-square max-h-[200px]">
-              <RadialBarChart data={[{ value: 73 }]} innerRadius="60%" outerRadius="90%">
+              <RadialBarChart 
+                data={[{ name: "달성률", value: 73, fill: "var(--chart-1)" }]} 
+                innerRadius="60%" 
+                outerRadius="90%"
+                startAngle={90}
+                endAngle={90 + (73 / 100) * 360}
+                cx="50%"
+                cy="50%"
+              >
                 <ChartTooltip 
                   content={<ChartTooltipContent hideLabel />}
                   formatter={(value) => [`${value}%`, "달성률"]}
                 />
                 <RadialBar 
                   dataKey="value" 
-                  fill="hsl(var(--chart-1))"
-                  stroke="hsl(var(--chart-1))"
+                  fill="var(--chart-1)"
+                  stroke="var(--chart-1)"
                   strokeWidth={2}
+                  cornerRadius={4}
+                  maxBarSize={20}
                 />
               </RadialBarChart>
             </ChartContainer>
@@ -523,16 +533,26 @@ export const RadialChart: Story = {
           </CardHeader>
           <CardContent>
             <ChartContainer config={chartConfig} className="mx-auto aspect-square max-h-[200px]">
-              <RadialBarChart data={[{ value: 87 }]} innerRadius="60%" outerRadius="90%">
+              <RadialBarChart 
+                data={[{ name: "만족도", value: 87, fill: "var(--chart-3)" }]} 
+                innerRadius="60%" 
+                outerRadius="90%"
+                startAngle={90}
+                endAngle={90 + (87 / 100) * 360}
+                cx="50%"
+                cy="50%"
+              >
                 <ChartTooltip 
                   content={<ChartTooltipContent hideLabel />}
                   formatter={(value) => [`${value}%`, "만족도"]}
                 />
                 <RadialBar 
                   dataKey="value" 
-                  fill="hsl(var(--chart-3))"
-                  stroke="hsl(var(--chart-3))"
+                  fill="var(--chart-3)"
+                  stroke="var(--chart-3)"
                   strokeWidth={2}
+                  cornerRadius={4}
+                  maxBarSize={20}
                 />
               </RadialBarChart>
             </ChartContainer>
@@ -557,16 +577,26 @@ export const RadialChart: Story = {
           </CardHeader>
           <CardContent>
             <ChartContainer config={chartConfig} className="mx-auto aspect-square max-h-[200px]">
-              <RadialBarChart data={[{ value: 99.2 }]} innerRadius="60%" outerRadius="90%">
+              <RadialBarChart 
+                data={[{ name: "가동률", value: 99.2, fill: "var(--chart-2)" }]} 
+                innerRadius="60%" 
+                outerRadius="90%"
+                startAngle={90}
+                endAngle={90 + (99.2 / 100) * 360}
+                cx="50%"
+                cy="50%"
+              >
                 <ChartTooltip 
                   content={<ChartTooltipContent hideLabel />}
                   formatter={(value) => [`${value}%`, "가동률"]}
                 />
                 <RadialBar 
                   dataKey="value" 
-                  fill="hsl(var(--chart-2))"
-                  stroke="hsl(var(--chart-2))"
+                  fill="var(--chart-2)"
+                  stroke="var(--chart-2)"
                   strokeWidth={2}
+                  cornerRadius={4}
+                  maxBarSize={20}
                 />
               </RadialBarChart>
             </ChartContainer>
@@ -609,15 +639,15 @@ export const ComposedChartStory: Story = {
     const chartConfig = {
       revenue: {
         label: "매출 (만원)",
-        color: "hsl(var(--chart-1))",
+        color: "var(--chart-1)",
       },
       orders: {
         label: "주문 수",
-        color: "hsl(var(--chart-2))",
+        color: "var(--chart-2)",
       },
       avgOrder: {
         label: "평균 주문액 (만원)",
-        color: "hsl(var(--chart-3))",
+        color: "var(--chart-3)",
       },
     } satisfies ChartConfig
 
@@ -741,7 +771,7 @@ export const DashboardCharts: Story = {
     const chartConfig = {
       value: {
         label: "값",
-        color: "hsl(var(--chart-1))",
+        color: "var(--chart-1)",
       },
     } satisfies ChartConfig
 
@@ -751,7 +781,7 @@ export const DashboardCharts: Story = {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {kpiData.map((kpi, index) => (
             <Card key={kpi.title}>
-              <CardContent className="p-4">
+              <CardContent className="pt-4 px-4">
                 <div className="flex items-center justify-between mb-2">
                   <kpi.icon className="h-4 w-4 text-muted-foreground" />
                   <Badge 
@@ -773,7 +803,7 @@ export const DashboardCharts: Story = {
                 </div>
                 
                 {/* 미니 차트 */}
-                <div className="mt-3 h-[40px]">
+                <div className="mt-3">
                   <ChartContainer config={chartConfig}>
                     <AreaChart 
                       data={kpi.chartData.map((value, i) => ({ index: i, value }))}
@@ -814,8 +844,8 @@ export const DashboardCharts: Story = {
             </CardHeader>
             <CardContent>
               <ChartContainer config={{
-                visitors: { label: "방문자", color: "hsl(var(--chart-1))" },
-                pageViews: { label: "페이지뷰", color: "hsl(var(--chart-2))" }
+                visitors: { label: "방문자", color: "var(--chart-1)" },
+                pageViews: { label: "페이지뷰", color: "var(--chart-2)" }
               }}>
                 <RechartsLineChart data={[
                   { day: "월", visitors: 1200, pageViews: 2400 },
@@ -853,10 +883,10 @@ export const DashboardCharts: Story = {
             </CardHeader>
             <CardContent>
               <ChartContainer config={{
-                electronics: { label: "전자제품", color: "hsl(var(--chart-1))" },
-                clothing: { label: "의류", color: "hsl(var(--chart-2))" },
-                books: { label: "도서", color: "hsl(var(--chart-3))" },
-                home: { label: "홈&가든", color: "hsl(var(--chart-4))" }
+                electronics: { label: "전자제품", color: "var(--chart-1)" },
+                clothing: { label: "의류", color: "var(--chart-2)" },
+                books: { label: "도서", color: "var(--chart-3)" },
+                home: { label: "홈&가든", color: "var(--chart-4)" }
               }}>
                 <RechartsBarChart data={[
                   { category: "전자제품", value: 45 },
@@ -898,7 +928,7 @@ export const AccessibilityDemo: Story = {
     const chartConfig = {
       value: {
         label: "비율 (%)",
-        color: "hsl(var(--chart-1))",
+        color: "var(--chart-1)",
       },
     } satisfies ChartConfig
 
@@ -1000,7 +1030,7 @@ export const AccessibilityDemo: Story = {
                   >
                     <div 
                       className="w-4 h-4 rounded"
-                      style={{ backgroundColor: `hsl(var(--chart-${(index % 5) + 1}))` }}
+                      style={{ backgroundColor: `var(--chart-${(index % 5) + 1})` }}
                       aria-hidden="true"
                     />
                     <div className="flex-1">
