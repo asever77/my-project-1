@@ -18,7 +18,7 @@ import {
   Wifi, 
   WifiOff, 
   Bluetooth, 
-  Airplane, 
+    Plane, 
   Shield, 
   ShieldOff, 
   Lock, 
@@ -103,11 +103,6 @@ const meta: Meta<typeof Switch> = {
     disabled: {
       description: '비활성화 상태',
       control: 'boolean',
-    },
-    size: {
-      description: '스위치 크기',
-      control: 'select',
-      options: ['sm', 'default', 'lg'],
     },
   },
 };
@@ -484,7 +479,7 @@ export const SystemSettings: Story = {
         id: 'airplane',
         label: '비행기 모드',
         description: '모든 무선 연결을 비활성화합니다',
-        icon: system.airplane ? Airplane : Globe,
+        icon: system.airplane ? Plane : Globe,
         checked: system.airplane,
         category: 'connectivity',
       },

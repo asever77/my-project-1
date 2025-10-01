@@ -643,7 +643,7 @@ export const AccessibilityDemo: Story = {
               <MenubarShortcut>⌘C</MenubarShortcut>
             </MenubarItem>
             <MenubarItem role="menuitem">
-              <Paste className="mr-2 h-4 w-4" />
+              <Clipboard className="mr-2 h-4 w-4" />
               붙여넣기
               <MenubarShortcut>⌘V</MenubarShortcut>
             </MenubarItem>
