@@ -59,7 +59,7 @@ export const Default: Story = {
   render: () => (
     <Drawer>
       <DrawerTrigger asChild>
-        <Button variant="outline">서랍 열기</Button>
+        <Button variant="outline" onClick={() => console.log('drawer opened')}>서랍 열기</Button>
       </DrawerTrigger>
       <DrawerContent>
         <div className="mx-auto w-full max-w-sm">

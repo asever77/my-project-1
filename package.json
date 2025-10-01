@@ -2,11 +2,14 @@
   "name": "my-project-1",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://asever77.github.io/my-project-1",
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d out",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
@@ -74,6 +77,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.5.4",
     "eslint-plugin-storybook": "^9.1.8",
+    "gh-pages": "^6.3.0",
     "playwright": "^1.55.1",
     "postcss": "^8.5.6",
     "storybook": "^9.1.8",

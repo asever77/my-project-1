@@ -81,92 +81,94 @@ type Story = StoryObj<typeof NavigationMenu>;
 
 export const Default: Story = {
   render: () => (
-    <NavigationMenu>
-      <NavigationMenuList>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>시작하기</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-              <li className="row-span-3">
-                <NavigationMenuLink asChild>
-                  <a
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                    href="/"
-                  >
-                    <Home className="h-6 w-6" />
-                    <div className="mb-2 mt-4 text-lg font-medium">
-                      홈페이지
-                    </div>
-                    <p className="text-sm leading-tight text-muted-foreground">
-                      우리 서비스의 메인 페이지로 이동하세요.
-                    </p>
-                  </a>
-                </NavigationMenuLink>
-              </li>
-              <ListItem href="/docs" title="문서">
-                API 문서와 가이드를 확인하세요.
-              </ListItem>
-              <ListItem href="/examples" title="예제">
-                다양한 사용 예제를 살펴보세요.
-              </ListItem>
-              <ListItem href="/tutorials" title="튜토리얼">
-                단계별 학습 가이드를 따라해보세요.
-              </ListItem>
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>제품</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-              <ListItem title="웹 애플리케이션" href="/products/web">
-                <Globe className="h-4 w-4 mr-2" />
-                반응형 웹 애플리케이션 개발
-              </ListItem>
-              <ListItem title="모바일 앱" href="/products/mobile">
-                <Smartphone className="h-4 w-4 mr-2" />
-                iOS와 Android 앱 개발
-              </ListItem>
-              <ListItem title="데스크톱 소프트웨어" href="/products/desktop">
-                <Laptop className="h-4 w-4 mr-2" />
-                크로스 플랫폼 데스크톱 앱
-              </ListItem>
-              <ListItem title="API 서비스" href="/products/api">
-                <Server className="h-4 w-4 mr-2" />
-                RESTful API 및 GraphQL
-              </ListItem>
-              <ListItem title="데이터베이스" href="/products/database">
-                <Database className="h-4 w-4 mr-2" />
-                클라우드 데이터베이스 솔루션
-              </ListItem>
-              <ListItem title="호스팅" href="/products/hosting">
-                <Wifi className="h-4 w-4 mr-2" />
-                안정적인 웹 호스팅 서비스
-              </ListItem>
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        
-        <NavigationMenuItem>
-          <NavigationMenuLink href="/pricing" className={navigationMenuTriggerStyle()}>
-            가격
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        
-        <NavigationMenuItem>
-          <NavigationMenuLink href="/contact" className={navigationMenuTriggerStyle()}>
-            연락처
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-      </NavigationMenuList>
-    </NavigationMenu>
+    <div className="w-full h-[40rem]">
+      <NavigationMenu>
+        <NavigationMenuList>
+          <NavigationMenuItem>
+            <NavigationMenuTrigger>시작하기</NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                <li className="row-span-3">
+                  <NavigationMenuLink asChild>
+                    <a
+                      className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                      href="/"
+                    >
+                      <Home className="h-6 w-6" />
+                      <div className="mb-2 mt-4 text-lg font-medium">
+                        홈페이지
+                      </div>
+                      <p className="text-sm leading-tight text-muted-foreground">
+                        우리 서비스의 메인 페이지로 이동하세요.
+                      </p>
+                    </a>
+                  </NavigationMenuLink>
+                </li>
+                <ListItem href="/docs" title="문서">
+                  API 문서와 가이드를 확인하세요.
+                </ListItem>
+                <ListItem href="/examples" title="예제">
+                  다양한 사용 예제를 살펴보세요.
+                </ListItem>
+                <ListItem href="/tutorials" title="튜토리얼">
+                  단계별 학습 가이드를 따라해보세요.
+                </ListItem>
+              </ul>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+          
+          <NavigationMenuItem>
+            <NavigationMenuTrigger>제품</NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                <ListItem title="웹 애플리케이션" href="/products/web">
+                  <Globe className="h-4 w-4 mr-2" />
+                  반응형 웹 애플리케이션 개발
+                </ListItem>
+                <ListItem title="모바일 앱" href="/products/mobile">
+                  <Smartphone className="h-4 w-4 mr-2" />
+                  iOS와 Android 앱 개발
+                </ListItem>
+                <ListItem title="데스크톱 소프트웨어" href="/products/desktop">
+                  <Laptop className="h-4 w-4 mr-2" />
+                  크로스 플랫폼 데스크톱 앱
+                </ListItem>
+                <ListItem title="API 서비스" href="/products/api">
+                  <Server className="h-4 w-4 mr-2" />
+                  RESTful API 및 GraphQL
+                </ListItem>
+                <ListItem title="데이터베이스" href="/products/database">
+                  <Database className="h-4 w-4 mr-2" />
+                  클라우드 데이터베이스 솔루션
+                </ListItem>
+                <ListItem title="호스팅" href="/products/hosting">
+                  <Wifi className="h-4 w-4 mr-2" />
+                  안정적인 웹 호스팅 서비스
+                </ListItem>
+              </ul>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+          
+          <NavigationMenuItem>
+            <NavigationMenuLink href="/pricing" className={navigationMenuTriggerStyle()}>
+              가격
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+          
+          <NavigationMenuItem>
+            <NavigationMenuLink href="/contact" className={navigationMenuTriggerStyle()}>
+              연락처
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+        </NavigationMenuList>
+      </NavigationMenu>
+    </div>
   ),
 };
 
 export const EcommerceMenu: Story = {
   render: () => (
-    <div className="w-full">
+    <div className="w-full h-[40rem]">
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
@@ -280,7 +282,7 @@ export const EcommerceMenu: Story = {
 
 export const CompanyWebsite: Story = {
   render: () => (
-    <div className="w-full">
+    <div className="w-full h-[40rem]">
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
@@ -412,7 +414,7 @@ export const CompanyWebsite: Story = {
 
 export const MediaLibrary: Story = {
   render: () => (
-    <div className="w-full">
+    <div className="w-full h-[40rem]">
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
@@ -526,7 +528,7 @@ export const MediaLibrary: Story = {
 
 export const AccessibilityDemo: Story = {
   render: () => (
-    <div className="w-full space-y-6">
+    <div className="w-full space-y-6  h-[60rem]">
       <div className="p-4 border rounded-lg">
         <h3 className="font-semibold mb-2">접근성 기능</h3>
         <ul className="text-sm space-y-1 text-muted-foreground">
