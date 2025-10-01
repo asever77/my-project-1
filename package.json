@@ -10,6 +10,8 @@
     "lint": "eslint",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d out",
+    "predeploy-storybook": "npm run build-storybook",
+    "deploy-storybook": "gh-pages -d storybook-static -b gh-pages-storybook",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },

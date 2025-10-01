@@ -16,7 +16,32 @@ const config: StorybookConfig = {
     "options": {}
   },
   "staticDirs": [
-    "..\\public"
-  ]
+    "../public"
+  ],
+  "viteFinal": async (config) => {
+    // GitHub Actions에서 빌드 시 이미지 문제 해결
+    if (config.build) {
+      config.build.rollupOptions = {
+        ...config.build.rollupOptions,
+        external: (id) => {
+          // 문제가 되는 이미지 파일들을 external로 처리
+          return id.includes('?ignore') || 
+                 id.includes('.svg') && id.includes('assets') ||
+                 id.includes('github.svg');
+        }
+      };
+    }
+    
+    // resolve alias 설정
+    config.resolve = {
+      ...config.resolve,
+      alias: {
+        ...config.resolve?.alias,
+        '@': require('path').resolve(__dirname, '../src'),
+      },
+    };
+    
+    return config;
+  }
 };
 export default config;

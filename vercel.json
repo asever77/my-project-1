@@ -1,0 +1,14 @@
+{
+  "name": "my-project-1-storybook",
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "buildCommand": "npm run build-storybook",
+        "outputDirectory": "storybook-static"
+      }
+    }
+  ]
+}
