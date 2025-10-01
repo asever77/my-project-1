@@ -195,3 +195,59 @@ html {
     @apply bg-background text-foreground;
   }
 }
+
+/* ---------------------------------------------------------------- */
+/* 7. RECHARTS CHART STYLES */
+/* ---------------------------------------------------------------- */
+
+/* Recharts 기본 스타일 */
+.recharts-cartesian-axis-tick-line {
+  stroke: hsl(var(--muted-foreground));
+}
+
+.recharts-cartesian-axis-tick-value {
+  fill: hsl(var(--muted-foreground));
+  font-size: 0.75rem;
+}
+
+.recharts-cartesian-grid-line {
+  stroke: hsl(var(--border));
+}
+
+.recharts-cartesian-axis-line {
+  stroke: hsl(var(--border));
+}
+
+.recharts-legend-wrapper {
+  font-size: 0.875rem;
+}
+
+.recharts-tooltip-wrapper {
+  border-radius: 0.5rem;
+  border: 1px solid hsl(var(--border));
+  background-color: hsl(var(--background));
+  padding: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.recharts-tooltip-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.recharts-tooltip-item {
+  font-size: 0.875rem;
+}
+
+.recharts-active-bar,
+.recharts-active-dot {
+  fill: hsl(var(--primary));
+}
+
+.recharts-pie-sector {
+  outline: none;
+}
+
+.recharts-surface {
+  overflow: visible;
+}
