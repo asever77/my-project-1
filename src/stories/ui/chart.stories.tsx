@@ -489,24 +489,32 @@ export const RadialChart: Story = {
           </CardHeader>
           <CardContent>
             <ChartContainer config={chartConfig} className="mx-auto aspect-square max-h-[200px]">
-              <RadialBarChart 
-                data={[{ value: 73 }]} 
-                innerRadius="60%" 
-                outerRadius="90%"
-                startAngle={90}
-                endAngle={450}
-              >
+              <RechartsPieChart>
                 <ChartTooltip 
                   content={<ChartTooltipContent hideLabel />}
                   formatter={(value) => [`${value}%`, "달성률"]}
                 />
-                <RadialBar 
-                  dataKey="value" 
-                  fill="var(--chart-1)"
-                  strokeWidth={2}
-                  cornerRadius={4}
-                />
-              </RadialBarChart>
+                <Pie
+                  data={[
+                    { name: "달성", value: 73, fill: "var(--chart-1)" },
+                    { name: "잔여", value: 27, fill: "hsl(var(--muted))" }
+                  ]}
+                  cx="50%"
+                  cy="50%"
+                  innerRadius="60%"
+                  outerRadius="90%"
+                  startAngle={90}
+                  endAngle={450}
+                  dataKey="value"
+                >
+                  {[
+                    { name: "달성", value: 73, fill: "var(--chart-1)" },
+                    { name: "잔여", value: 27, fill: "hsl(var(--muted))" }
+                  ].map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry.fill} />
+                  ))}
+                </Pie>
+              </RechartsPieChart>
             </ChartContainer>
             <div className="text-center mt-4">
               <div className="text-2xl font-bold">73%</div>
@@ -529,24 +537,32 @@ export const RadialChart: Story = {
           </CardHeader>
           <CardContent>
             <ChartContainer config={chartConfig} className="mx-auto aspect-square max-h-[200px]">
-              <RadialBarChart 
-                data={[{ value: 87 }]} 
-                innerRadius="60%" 
-                outerRadius="90%"
-                startAngle={90}
-                endAngle={450}
-              >
+              <RechartsPieChart>
                 <ChartTooltip 
                   content={<ChartTooltipContent hideLabel />}
                   formatter={(value) => [`${value}%`, "만족도"]}
                 />
-                <RadialBar 
-                  dataKey="value" 
-                  fill="var(--chart-3)"
-                  strokeWidth={2}
-                  cornerRadius={4}
-                />
-              </RadialBarChart>
+                <Pie
+                  data={[
+                    { name: "만족", value: 87, fill: "var(--chart-3)" },
+                    { name: "잔여", value: 13, fill: "hsl(var(--muted))" }
+                  ]}
+                  cx="50%"
+                  cy="50%"
+                  innerRadius="60%"
+                  outerRadius="90%"
+                  startAngle={90}
+                  endAngle={450}
+                  dataKey="value"
+                >
+                  {[
+                    { name: "만족", value: 87, fill: "var(--chart-3)" },
+                    { name: "잔여", value: 13, fill: "hsl(var(--muted))" }
+                  ].map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry.fill} />
+                  ))}
+                </Pie>
+              </RechartsPieChart>
             </ChartContainer>
             <div className="text-center mt-4">
               <div className="text-2xl font-bold">87%</div>
@@ -569,24 +585,32 @@ export const RadialChart: Story = {
           </CardHeader>
           <CardContent>
             <ChartContainer config={chartConfig} className="mx-auto aspect-square max-h-[200px]">
-              <RadialBarChart 
-                data={[{ value: 99.2 }]} 
-                innerRadius="60%" 
-                outerRadius="90%"
-                startAngle={90}
-                endAngle={450}
-              >
+              <RechartsPieChart>
                 <ChartTooltip 
                   content={<ChartTooltipContent hideLabel />}
                   formatter={(value) => [`${value}%`, "가동률"]}
                 />
-                <RadialBar 
-                  dataKey="value" 
-                  fill="var(--chart-2)"
-                  strokeWidth={2}
-                  cornerRadius={4}
-                />
-              </RadialBarChart>
+                <Pie
+                  data={[
+                    { name: "가동", value: 99.2, fill: "var(--chart-2)" },
+                    { name: "중단", value: 0.8, fill: "hsl(var(--muted))" }
+                  ]}
+                  cx="50%"
+                  cy="50%"
+                  innerRadius="60%"
+                  outerRadius="90%"
+                  startAngle={90}
+                  endAngle={450}
+                  dataKey="value"
+                >
+                  {[
+                    { name: "가동", value: 99.2, fill: "var(--chart-2)" },
+                    { name: "중단", value: 0.8, fill: "hsl(var(--muted))" }
+                  ].map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry.fill} />
+                  ))}
+                </Pie>
+              </RechartsPieChart>
             </ChartContainer>
             <div className="text-center mt-4">
               <div className="text-2xl font-bold">99.2%</div>

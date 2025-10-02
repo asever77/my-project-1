@@ -20,7 +20,7 @@ const meta: Meta<AccordionProps> = {
     docs: {
       description: {
         component: `
-ㅁㅁRadix UI 기반의 아코디언 컴포넌트입니다. 세로로 쌓인 아이템 목록을 보여주며, 각 아이템을 확장하거나 축소하여 내용을 표시할 수 있습니다.
+Radix UI 기반의 아코디언 컴포넌트입니다. 세로로 쌓인 아이템 목록을 보여주며, 각 아이템을 확장하거나 축소하여 내용을 표시할 수 있습니다.
 
 ## 주요 기능
 - **단일/다중 확장**: \`type\` prop을 통해 한 번에 하나의 아이템만 열리도록(\`single\`) 하거나 여러 아이템을 동시에 열 수 있도록(\`multiple\`) 설정
@@ -75,7 +75,7 @@ import {
   },
   tags: ["autodocs"],
   render: (args) => (
-    <Accordion {...args} className="w-[400px]">
+    <Accordion {...args} className="w-[40rem]">
       <AccordionItem value="item-1">
         <AccordionTrigger>접근성이 지원되나요?</AccordionTrigger>
         <AccordionContent>
@@ -103,7 +103,7 @@ type Story = StoryObj<AccordionProps>
 
 export const Default: Story = {
   render: () => (
-    <Accordion type="single" collapsible defaultValue="item-1" className="w-[500px]">
+    <Accordion type="single" collapsible={true} defaultValue="item-1" className="w-[50rem]">
       <AccordionItem value="item-1">
         <AccordionTrigger>회원가입 방법이 궁금합니다.</AccordionTrigger>
         <AccordionContent>
@@ -139,7 +139,7 @@ export const Default: Story = {
 
 export const Multiple: Story = {
   render: () => (
-    <Accordion type="multiple" defaultValue={["account", "security"]} className="w-[500px]">
+    <Accordion type="multiple" defaultValue={["account", "security"]} className="w-[50rem]">
       <AccordionItem value="account">
         <AccordionTrigger>계정 설정</AccordionTrigger>
         <AccordionContent>
