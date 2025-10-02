@@ -18,14 +18,28 @@ const config: StorybookConfig = {
   "staticDirs": [
     "../public"
   ],
-  // GitHub Pages를 위한 기본 경로 설정
-  "managerHead": (head) => `
-    ${head}
-    <base href="/my-project-1/storybook/">
-  `,
+  // GitHub Pages를 위한 기본 경로 설정 (배포 시에만)
+  "managerHead": (head) => {
+    const isProduction = process.env.NODE_ENV === 'production';
+    const isGitHubPages = process.env.GITHUB_ACTIONS === 'true';
+    
+    if (isProduction && isGitHubPages) {
+      return `
+        ${head}
+        <base href="/my-project-1/storybook/">
+      `;
+    }
+    return head;
+  },
   "viteFinal": async (config) => {
     // 프로덕션 환경 설정
     const isProduction = process.env.NODE_ENV === 'production';
+    const isGitHubPages = process.env.GITHUB_ACTIONS === 'true';
+    
+    // GitHub Pages 배포 시에만 base 설정
+    if (isProduction && isGitHubPages) {
+      config.base = '/my-project-1/storybook/';
+    }
     
     // GitHub Actions에서 빌드 시 이미지 문제 해결
     if (config.build) {

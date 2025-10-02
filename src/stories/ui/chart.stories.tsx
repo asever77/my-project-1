@@ -490,13 +490,11 @@ export const RadialChart: Story = {
           <CardContent>
             <ChartContainer config={chartConfig} className="mx-auto aspect-square max-h-[200px]">
               <RadialBarChart 
-                data={[{ name: "달성률", value: 73, fill: "var(--chart-1)" }]} 
+                data={[{ value: 73 }]} 
                 innerRadius="60%" 
                 outerRadius="90%"
                 startAngle={90}
-                endAngle={90 + (73 / 100) * 360}
-                cx="50%"
-                cy="50%"
+                endAngle={450}
               >
                 <ChartTooltip 
                   content={<ChartTooltipContent hideLabel />}
@@ -505,10 +503,8 @@ export const RadialChart: Story = {
                 <RadialBar 
                   dataKey="value" 
                   fill="var(--chart-1)"
-                  stroke="var(--chart-1)"
                   strokeWidth={2}
                   cornerRadius={4}
-                  maxBarSize={20}
                 />
               </RadialBarChart>
             </ChartContainer>
@@ -534,13 +530,11 @@ export const RadialChart: Story = {
           <CardContent>
             <ChartContainer config={chartConfig} className="mx-auto aspect-square max-h-[200px]">
               <RadialBarChart 
-                data={[{ name: "만족도", value: 87, fill: "var(--chart-3)" }]} 
+                data={[{ value: 87 }]} 
                 innerRadius="60%" 
                 outerRadius="90%"
                 startAngle={90}
-                endAngle={90 + (87 / 100) * 360}
-                cx="50%"
-                cy="50%"
+                endAngle={450}
               >
                 <ChartTooltip 
                   content={<ChartTooltipContent hideLabel />}
@@ -549,10 +543,8 @@ export const RadialChart: Story = {
                 <RadialBar 
                   dataKey="value" 
                   fill="var(--chart-3)"
-                  stroke="var(--chart-3)"
                   strokeWidth={2}
                   cornerRadius={4}
-                  maxBarSize={20}
                 />
               </RadialBarChart>
             </ChartContainer>
@@ -578,13 +570,11 @@ export const RadialChart: Story = {
           <CardContent>
             <ChartContainer config={chartConfig} className="mx-auto aspect-square max-h-[200px]">
               <RadialBarChart 
-                data={[{ name: "가동률", value: 99.2, fill: "var(--chart-2)" }]} 
+                data={[{ value: 99.2 }]} 
                 innerRadius="60%" 
                 outerRadius="90%"
                 startAngle={90}
-                endAngle={90 + (99.2 / 100) * 360}
-                cx="50%"
-                cy="50%"
+                endAngle={450}
               >
                 <ChartTooltip 
                   content={<ChartTooltipContent hideLabel />}
@@ -593,10 +583,8 @@ export const RadialChart: Story = {
                 <RadialBar 
                   dataKey="value" 
                   fill="var(--chart-2)"
-                  stroke="var(--chart-2)"
                   strokeWidth={2}
                   cornerRadius={4}
-                  maxBarSize={20}
                 />
               </RadialBarChart>
             </ChartContainer>
@@ -966,15 +954,11 @@ export const AccessibilityDemo: Story = {
               <ChartContainer config={chartConfig}>
                 <RechartsBarChart 
                   data={chartData}
-                  accessibilityLayer
                 >
                   <XAxis 
                     dataKey="category"
-                    aria-label="카테고리"
                   />
-                  <YAxis 
-                    aria-label="비율 (퍼센트)"
-                  />
+                  <YAxis />
                   <ChartTooltip 
                     content={<ChartTooltipContent 
                       formatter={(value, name, props) => [
@@ -987,7 +971,6 @@ export const AccessibilityDemo: Story = {
                     dataKey="value" 
                     fill="var(--color-value)"
                     radius={4}
-                    aria-label="데이터 값"
                   />
                 </RechartsBarChart>
               </ChartContainer>
